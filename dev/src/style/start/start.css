@@ -1,0 +1,32 @@
+.start-page{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	row-gap: 2rem;
+	width: 100%;
+	min-height: 100vh;
+	background-image: url('../../../assets/start/start-bg.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.start-button{
+	padding: 3rem 6rem;
+	border: 1px solid #471c8d;
+	font-size: 2.6rem;
+	background-color: rgba(115, 27, 156, 0.6);
+	letter-spacing: 0.2rem;
+	border-radius: 10%;
+	color: #fff;
+	cursor: pointer;
+}
+
+.start-page-title{
+	padding: 2rem 1rem;
+	font-size: 4.2rem;
+	line-height: 5.2rem;
+	color: #a5bdc7;
+	letter-spacing: 0.3rem;
+	font-style: italic;
+	text-align: center;
+}

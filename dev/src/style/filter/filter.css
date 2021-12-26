@@ -1,0 +1,233 @@
+.filter-inner{
+	display: flex;
+	column-gap: 7rem;
+	padding: 2rem 0;
+}
+.filter-item{
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+	padding: 2rem 0;
+}
+.filter-title{
+	font-size: 2.6rem;
+	line-height: 2.8rem;
+	color: #fff;
+	font-style: italic;
+}
+.filter-shape{
+	display: flex;
+	column-gap: 1.5rem;
+	align-items: center;
+}
+.filter-shape_active{
+	filter: invert(8%) sepia(66%) saturate(461%) hue-rotate(
+322deg) brightness(83%) contrast(93%);
+}
+.filter-text{
+	font-size: 2.2rem;
+	line-height: 2.4rem;
+	color: #fff;
+}
+.filter-shape-ball{
+	width: 30px;
+	cursor: pointer;
+}
+.filter-color{
+	border-radius: 7px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+.filter-color_white{
+	background-color: #fff;
+}
+.filter-color_white-active{
+position: relative;
+}
+.filter-color_white::after{
+	content: 'V';
+	font-size: 16px;
+	color: #000000;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.filter-color_yellow{
+	background-color: rgb(218, 221, 34);
+}
+.filter-color_yellow-active{
+	position: relative;
+}
+.filter-color_yellow-active::after{
+	content: 'V';
+	font-size: 16px;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.filter-color_red{
+	background-color: rgb(224, 44, 12);
+}
+.filter-color_red-active{
+position: relative;
+}
+.filter-color_red-active::after{
+	content: 'V';
+	font-size: 16px;
+	color: rgb(118, 73, 190);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	}
+.filter-color_blue{
+	background-color: rgb(13, 67, 243);
+}
+.filter-color_blue-active{
+	position: relative;
+}
+.filter-color_blue-active::after{
+	content: 'V';
+	font-size: 16px;
+	color: rgb(61, 202, 115);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.filter-color_green{
+	background-color: rgb(22, 190, 78);
+}
+.filter-color_green-active{
+	position: relative;
+}
+.filter-color_green-active::after{
+	content: 'V';
+	font-size: 16px;
+	color: rgb(201, 55, 145);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.filter-size-big{
+width: 50px;
+height: 70px;
+cursor: pointer;
+}
+.filter-size-medium{
+	width: 42px;
+	height: 60px;
+	cursor: pointer;
+	}
+	.filter-size-small{
+		width: 30px;
+		height: 42px;
+		cursor: pointer;
+		}
+		.filter-favorite{
+			width: 32px;
+			height: 32px;
+			cursor: pointer;
+			position: relative;
+			background-color: transparent;
+			border: 2px solid #aa36be;
+			border-radius: 8px;
+		}
+		.filter-favorite_active{
+			position: relative;
+		}
+		.filter-favorite_active::after{
+			content: 'V';
+	font-size: 16px;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+		}
+
+		#slider-instance, #slider-year {
+			max-width: 320px;
+			width: 100%;
+			height: 10px;
+}
+
+#slider-instance .noUi-connect,
+#slider-year .noUi-connect
+{
+			background: #c0392b;
+}
+.sldier-instance-inner{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	column-gap: 1rem;
+}
+#slider-round .noUi-handle .noUi-touch-area,
+#slider-year.noUi-handle .noUi-touch-area
+{
+	border: 1px solid transparent;
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	right: -10px;
+	bottom: -10px;
+	width: auto;
+	height: auto;
+}
+
+.noUi-horizontal {
+	height: 8px;
+}
+.noUi-horizontal .noUi-handle {
+	width: 22px;
+	height: 22px;
+	right: -17px;
+	top: -6px;
+	border-radius:50%;
+}
+
+.noUi-handle:before, .noUi-handle:after{
+	display: none;
+}
+.filter-ranges{
+	flex-basis: 470px;
+}
+.fliter-select{
+	appearance: none;
+	background-color: transparent;
+	width: 380px;
+	min-height: 1rem;
+	padding: 0.9rem 1rem;
+	border: 1px solid #aa36be;
+	color: #ffffff;
+	font-size: 2.2rem;
+	cursor: pointer;
+}
+.filter-option{
+	background-color: black;
+}
+.reset-filters{
+	font-size: 2.2rem;
+	padding: 1rem 3rem;
+	background-color: rgb(7, 67, 136);
+	border: 2px solid #aa36be;
+	color: #ffffff;
+	cursor: pointer;
+}
+@media (max-width: 1350px){
+	.filter-inner{
+		flex-direction: column;
+		align-items: center;
+	}
+	.filter-ranges {
+		flex-basis: 280px;
+		width: 505px;
+}
+}

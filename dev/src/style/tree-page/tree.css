@@ -1,0 +1,50 @@
+.tree-inner{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 7rem 0 3rem 0;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat
+}
+.tree-wrapper{
+	position: relative;
+	display: inline-block;
+	overflow-x: hidden;
+}
+.tree-swag{
+	position: absolute;
+	display: none;
+	column-gap: 0.7rem;
+	top: 50%;
+	left: 16%;
+}
+.tree-swag_on{
+	display: inline-flex;
+}
+.tree-swag-item{
+	width: 7px;
+	height: 7px;
+	background-color: rgb(163, 32, 32);
+	border-radius: 50%;
+	animation-name: swag;
+	animation-iteration-count: infinite;
+	animation-duration: .6s;
+}
+@keyframes swag {
+0%{
+	opacity: 1;
+}
+25%{
+	opacity: 0.7;
+}
+50%{
+	opacity: 0.3;
+}
+75%{
+	opacity: 0.7;
+}
+100%{
+	opacity: 1;
+}
+}
