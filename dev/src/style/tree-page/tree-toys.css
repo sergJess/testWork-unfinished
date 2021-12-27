@@ -1,28 +1,33 @@
-.toys-slots-inner{
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 2rem;
+.toys-slots-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
-.toy-card{
-	position: relative;
-	min-width: 90px;
-	min-height: 110px;
-	padding:  1rem 1rem;
-	background-color: #a88b8b;
-	border-radius: 12%;
+.toy-card {
+  position: relative;
+  min-width: 90px;
+  min-height: 110px;
+  padding: 1rem 1rem;
+  background-color: #a88b8b;
+  border-radius: 12%;
 }
-.toy-cards-img{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	max-width: 50px;
+.toy-cards-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50px;
 }
-.toy-cards-img-counter{
-	display: inline-block;
-	font-size: 1.4rem;
-	color: rgb(185, 173, 190);
-	padding: 0.2rem 0.5rem;
-	border-radius: 50%;
-	background-color: #218394;
+.toy-cards-img-counter {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: rgb(185, 173, 190);
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  background-color: #218394;
+}
+@media (max-width: 1360px) {
+  .toys-slots-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

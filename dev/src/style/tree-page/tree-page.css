@@ -1,4 +1,10 @@
-.tree-page{
-	display: flex;
-	column-gap: 2rem;
+.tree-page {
+  display: flex;
+  column-gap: 2rem;
+}
+@media (max-width: 1230px) {
+  .tree-page {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
 }

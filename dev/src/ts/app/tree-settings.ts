@@ -1,5 +1,6 @@
 import '../../style/tree-page/settings.css';
 import '../types/import-images';
+import '../types/import-audio';
 import tree1 from '../../../assets/trees/tree-1.png';
 import tree2 from '../../../assets/trees/tree-2.png';
 import tree3 from '../../../assets/trees/tree-3.png';
@@ -28,100 +29,302 @@ import treeBg5 from '../../../assets/tree-bg/tree-bg5.jpg';
 import treeBg6 from '../../../assets/tree-bg/tree-bg6.jpg';
 import treeBg7 from '../../../assets/tree-bg/tree-bg7.jpg';
 import treeBg8 from '../../../assets/tree-bg/tree-bg8.jpg';
+import audio from '../../../assets/settings/audio.svg';
+import song from '../../../assets/settings/eternally.mp3';
+import snow from '../../../assets/settings/snow.svg';
 
-const smallTreeImages = [`${tree1Small}`, `${tree2Small}`, `${tree3Small}`, `${tree4Small}`, `${tree5Small}`, `${tree6Small}`];
-const fullHeightTrees = [`${tree1}`, `${tree2}`, `${tree3}`, `${tree4}`, `${tree5}`, `${tree6}`];
-const smallTreeBg = [`${treeBgSmall1}`, `${treeBgSmall2}`,`${treeBgSmall3}`,`${treeBgSmall4}`,`${treeBgSmall5}`,`${treeBgSmall6}`,`${treeBgSmall7}`,`${treeBgSmall8}`];
-const treeBgs = [`${treeBg1}`,`${treeBg2}`,`${treeBg3}`,`${treeBg4}`,`${treeBg5}`,`${treeBg6}`,`${treeBg7}`,`${treeBg8}`];
-export default class TreeSettings{
-	private parent:	HTMLElement;
-	constructor(parentNode:	HTMLElement){
-this.parent = parentNode;
-	}
+const smallTreeImages = [
+  `${tree1Small}`,
+  `${tree2Small}`,
+  `${tree3Small}`,
+  `${tree4Small}`,
+  `${tree5Small}`,
+  `${tree6Small}`,
+];
+const fullHeightTrees = [
+  `${tree1}`,
+  `${tree2}`,
+  `${tree3}`,
+  `${tree4}`,
+  `${tree5}`,
+  `${tree6}`,
+];
+const smallTreeBg = [
+  `${treeBgSmall1}`,
+  `${treeBgSmall2}`,
+  `${treeBgSmall3}`,
+  `${treeBgSmall4}`,
+  `${treeBgSmall5}`,
+  `${treeBgSmall6}`,
+  `${treeBgSmall7}`,
+  `${treeBgSmall8}`,
+];
+const treeBgs = [
+  `${treeBg1}`,
+  `${treeBg2}`,
+  `${treeBg3}`,
+  `${treeBg4}`,
+  `${treeBg5}`,
+  `${treeBg6}`,
+  `${treeBg7}`,
+  `${treeBg8}`,
+];
 
-render(tree:	HTMLImageElement, treeBg:HTMLElement,swag?:HTMLElement):void{
-const settingsInner = document.createElement('div');
-const firTreeInner = document.createElement('div');
-firTreeInner.classList.add('fir-tree-inner');
-const firTreeTitle = document.createElement('h2');
-firTreeTitle.textContent = 'Выберите Ёлку';
-firTreeTitle.classList.add('fir-tree-title');
-for(let i = 0, length = smallTreeImages.length; i < length; i++){
-	const treeCard =	document.createElement('div');
-	treeCard.classList.add('tree-card');
-	const treeCardImg = document.createElement('img');
-	treeCardImg.setAttribute('alt', 'fir-tree');
-	treeCardImg.src = smallTreeImages[i];
-	treeCard.append(treeCardImg);
-	treeCard.onclick = ():void=>{
-		firTreeInner.childNodes.forEach(item=>{
-			const el = item as HTMLElement;
-			el.classList.remove('tree-card_chosen');
-		})
-		treeCard.classList.add('tree-card_chosen');
-		tree.src = fullHeightTrees[i];
-	}
-	firTreeInner.append(treeCard);
+class SoundMusic {
+  private parent: HTMLElement;
+  private player = document.createElement('audio');
+  constructor(parentNode: HTMLElement) {
+    this.parent = parentNode;
+  }
+  getPlayer(): HTMLAudioElement {
+    return this.player;
+  }
+  setSrcMusic(src: string): void {
+    this.player.setAttribute('src', src);
+  }
+  setLoop(str: string): void {
+    this.player.setAttribute('loop', str);
+  }
+  render(): void {
+    this.parent.append(this.player);
+  }
+}
+class SnowFall {
+  private parent: HTMLElement;
+  private timeOut: ReturnType<typeof setInterval>;
+  constructor(parentNode: HTMLElement) {
+    this.parent = parentNode;
+  }
+  createFlake(): void {
+    this.timeOut = setInterval((): void => {
+      const snowFlake = document.createElement('img');
+      snowFlake.classList.add('fa-snowflake');
+      snowFlake.style.left = `${Math.random() * this.parent.offsetWidth}px`;
+      snowFlake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      snowFlake.style.opacity = Math.random().toString();
+      snowFlake.style.width = `${Math.random() * 8 + 5}px`;
+      snowFlake.src = snow;
+      this.parent.append(snowFlake);
+      setTimeout((): void => {
+        snowFlake.remove();
+      }, 4000);
+    }, 45);
+  }
 
+  clear(): void {
+    clearInterval(this.timeOut);
+  }
 }
-const firstChild = firTreeInner.firstChild as HTMLElement;
-firstChild.classList.add('tree-card_chosen');
 
-const firTreeBgTitle = document.createElement('h2');
-firTreeBgTitle.textContent = 'Выберите фон';
-firTreeBgTitle.classList.add('fir-tree-title');
-const firTreeBgInner = document.createElement('div');
-firTreeBgInner.classList.add('fir-tree-bg-inner');
-for(let i = 0, length = smallTreeBg.length; i <	length; i++){
-	const card = document.createElement('div');
-	card.classList.add('fir-tree-bg-card');
-const img = document.createElement('img');
-img.src = smallTreeBg[i];
-card.append(img);
-firTreeBgInner.append(card);
-card.onclick = ()=>{
-	firTreeBgInner.childNodes.forEach(item=>{
-		const el = item as HTMLElement;
-		el.classList.remove('fir-tree-bg-card_chosen');
-	})
-	card.classList.add('fir-tree-bg-card_chosen');
-	treeBg.style.backgroundImage = `url(${treeBgs[i]})`;
-}
-}
-const firstChildBg = firTreeBgInner.firstChild as HTMLElement;
-firstChildBg.classList.add('fir-tree-bg-card_chosen');
+export default class TreeSettings {
+  private parent: HTMLElement;
+  constructor(parentNode: HTMLElement) {
+    this.parent = parentNode;
+  }
 
-const swagTitle = document.createElement('h2');
-swagTitle.textContent = 'Гирлянда';
-swagTitle.classList.add('fir-tree-title');
-const swagInner = document.createElement('div');
-swagInner.classList.add('swag-inner');
-const swagMulty = document.createElement('button');
-swagMulty.classList.add('swag-item', 'swag-multy');
-const swagRed = document.createElement('button');
-swagRed.classList.add('swag-item', 'swag-red');
-const swagBlue = document.createElement('button');
-swagBlue.classList.add('swag-item', 'swag-blue');
-const swagGreen = document.createElement('button');
-swagGreen.classList.add('swag-item', 'swag-green');
-const swagYellow = document.createElement('button');
-swagYellow.classList.add('swag-item', 'swag-yellow');
-const swagSwitcher = document.createElement('button');
-swagSwitcher.classList.add('swag-switch', 'swag-switch_off');
-swagSwitcher.textContent = 'OFF';
-swagSwitcher.onclick = ():void => {
-	swagSwitcher.classList.toggle('swag-switch_off');
-	if(swagSwitcher.classList.contains('swag-switch_off')){
-		swagSwitcher.textContent = 'OFF';
-		swag.classList.remove('tree-swag_on');
-	}
-	else{
-		swagSwitcher.textContent = 'ON';
-		swag.classList.add('tree-swag_on');
-	}
-}
-swagInner.append(swagMulty, swagRed, swagBlue, swagGreen, swagYellow, swagSwitcher);
-settingsInner.append(firTreeTitle, firTreeInner, firTreeBgTitle, firTreeBgInner, swagTitle, swagInner);
-	this.parent.append(settingsInner);
-}
+  render(
+    tree: HTMLImageElement,
+    treeBg: HTMLElement,
+    swag?: HTMLElement,
+    snowParent?: HTMLElement
+  ): void {
+    const settingsInner = document.createElement('div');
+
+    const settingsButtonsInner = document.createElement('div');
+    settingsButtonsInner.classList.add('settings-buttons-inner');
+    const audioInner = document.createElement('div');
+    const audioImg = document.createElement('img');
+    audioImg.classList.add('settings-button');
+    audioImg.src = audio;
+    const music = new SoundMusic(document.body);
+    music.setSrcMusic(song);
+    music.setLoop('true');
+    audioImg.onclick = (): void => {
+      if (!audioImg.classList.contains('audio-on')) {
+        music.getPlayer().play();
+        audioImg.classList.add('audio-on', 'settings-button_chosen');
+      } else {
+        audioImg.classList.remove('audio-on', 'settings-button_chosen');
+        music.getPlayer().pause();
+      }
+    };
+    audioInner.append(audioImg);
+    const snowInner = document.createElement('div');
+    const snowImg = document.createElement('img');
+    snowImg.classList.add('settings-button');
+    snowImg.src = snow;
+    const snowFall = new SnowFall(snowParent);
+    snowImg.onclick = (): void => {
+      if (!snowImg.classList.contains('snow-fall')) {
+        snowImg.classList.add('snow-fall', 'settings-button_chosen');
+        snowFall.createFlake();
+      } else {
+        snowImg.classList.remove('snow-fall', 'settings-button_chosen');
+        snowFall.clear();
+      }
+    };
+    snowInner.append(snowImg);
+    settingsButtonsInner.append(audioInner, snowInner);
+
+    const firTreeInner = document.createElement('div');
+    firTreeInner.classList.add('fir-tree-inner');
+    const firTreeTitle = document.createElement('h2');
+    firTreeTitle.textContent = 'Выберите Ёлку';
+    firTreeTitle.classList.add('fir-tree-title');
+    for (let i = 0, length = smallTreeImages.length; i < length; i++) {
+      const treeCard = document.createElement('div');
+      treeCard.classList.add('tree-card');
+      const treeCardImg = document.createElement('img');
+      treeCardImg.setAttribute('alt', 'fir-tree');
+      treeCardImg.src = smallTreeImages[i];
+      treeCard.append(treeCardImg);
+      treeCard.onclick = (): void => {
+        firTreeInner.childNodes.forEach((item) => {
+          const el = item as HTMLElement;
+          el.classList.remove('tree-card_chosen');
+        });
+        treeCard.classList.add('tree-card_chosen');
+        tree.src = fullHeightTrees[i];
+      };
+      firTreeInner.append(treeCard);
+    }
+    const firstChild = firTreeInner.firstChild as HTMLElement;
+    firstChild.classList.add('tree-card_chosen');
+
+    const firTreeBgTitle = document.createElement('h2');
+    firTreeBgTitle.textContent = 'Выберите фон';
+    firTreeBgTitle.classList.add('fir-tree-title');
+    const firTreeBgInner = document.createElement('div');
+    firTreeBgInner.classList.add('fir-tree-bg-inner');
+    for (let i = 0, length = smallTreeBg.length; i < length; i++) {
+      const card = document.createElement('div');
+      card.classList.add('fir-tree-bg-card');
+      const img = document.createElement('img');
+      img.src = smallTreeBg[i];
+      card.append(img);
+      firTreeBgInner.append(card);
+      card.onclick = () => {
+        firTreeBgInner.childNodes.forEach((item) => {
+          const el = item as HTMLElement;
+          el.classList.remove('fir-tree-bg-card_chosen');
+        });
+        card.classList.add('fir-tree-bg-card_chosen');
+        treeBg.style.backgroundImage = `url(${treeBgs[i]})`;
+      };
+    }
+    const firstChildBg = firTreeBgInner.firstChild as HTMLElement;
+    firstChildBg.classList.add('fir-tree-bg-card_chosen');
+
+    const swagTitle = document.createElement('h2');
+    swagTitle.textContent = 'Гирлянда';
+    swagTitle.classList.add('fir-tree-title');
+    const swagInner = document.createElement('div');
+    swagInner.classList.add('swag-inner');
+    const swagMulty = document.createElement('button');
+    swagMulty.classList.add('swag-item', 'swag-multy');
+    swagMulty.onclick = (): void => {
+      const items = swag.querySelectorAll('.tree-swag-item');
+      items.forEach((item): void => {
+        item.classList.remove(
+          'tree-swag-item_multy',
+          'tree-swag-item_red',
+          'tree-swag-item_blue',
+          'tree-swag-item_yellow',
+          'tree-swag-item_green'
+        );
+        item.classList.add('tree-swag-item_multy');
+      });
+    };
+    const swagRed = document.createElement('button');
+    swagRed.classList.add('swag-item', 'swag-red');
+    swagRed.onclick = (): void => {
+      const items = swag.querySelectorAll('.tree-swag-item');
+      items.forEach((item): void => {
+        item.classList.remove(
+          'tree-swag-item_multy',
+          'tree-swag-item_red',
+          'tree-swag-item_blue',
+          'tree-swag-item_yellow',
+          'tree-swag-item_green'
+        );
+        item.classList.add('tree-swag-item_red');
+      });
+    };
+    const swagBlue = document.createElement('button');
+    swagBlue.classList.add('swag-item', 'swag-blue');
+    swagBlue.onclick = (): void => {
+      const items = swag.querySelectorAll('.tree-swag-item');
+      items.forEach((item): void => {
+        item.classList.remove(
+          'tree-swag-item_multy',
+          'tree-swag-item_red',
+          'tree-swag-item_blue',
+          'tree-swag-item_yellow',
+          'tree-swag-item_green'
+        );
+        item.classList.add('tree-swag-item_blue');
+      });
+    };
+    const swagGreen = document.createElement('button');
+    swagGreen.classList.add('swag-item', 'swag-green');
+    swagGreen.onclick = (): void => {
+      const items = swag.querySelectorAll('.tree-swag-item');
+      items.forEach((item): void => {
+        item.classList.remove(
+          'tree-swag-item_multy',
+          'tree-swag-item_red',
+          'tree-swag-item_blue',
+          'tree-swag-item_yellow',
+          'tree-swag-item_green'
+        );
+        item.classList.add('tree-swag-item_green');
+      });
+    };
+    const swagYellow = document.createElement('button');
+    swagYellow.classList.add('swag-item', 'swag-yellow');
+    swagYellow.onclick = (): void => {
+      const items = swag.querySelectorAll('.tree-swag-item');
+      items.forEach((item): void => {
+        item.classList.remove(
+          'tree-swag-item_multy',
+          'tree-swag-item_red',
+          'tree-swag-item_blue',
+          'tree-swag-item_yellow',
+          'tree-swag-item_green'
+        );
+        item.classList.add('tree-swag-item_yellow');
+      });
+    };
+    const swagSwitcher = document.createElement('button');
+    swagSwitcher.classList.add('swag-switch', 'swag-switch_off');
+    swagSwitcher.textContent = 'OFF';
+    swagSwitcher.onclick = (): void => {
+      swagSwitcher.classList.toggle('swag-switch_off');
+      if (swagSwitcher.classList.contains('swag-switch_off')) {
+        swagSwitcher.textContent = 'OFF';
+        swag.classList.remove('tree-swag_on');
+      } else {
+        swagSwitcher.textContent = 'ON';
+        swag.classList.add('tree-swag_on');
+      }
+    };
+    swagInner.append(
+      swagMulty,
+      swagRed,
+      swagBlue,
+      swagGreen,
+      swagYellow,
+      swagSwitcher
+    );
+    settingsInner.append(
+      settingsButtonsInner,
+      firTreeTitle,
+      firTreeInner,
+      firTreeBgTitle,
+      firTreeBgInner,
+      swagTitle,
+      swagInner
+    );
+    this.parent.append(settingsInner);
+  }
 }

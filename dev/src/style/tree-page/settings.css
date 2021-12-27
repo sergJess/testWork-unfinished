@@ -1,76 +1,115 @@
-.fir-tree-inner{
-	padding: 1.5rem 0 ;
-	display: grid;
-	gap: 2rem 2rem;
-	grid-template-columns: repeat(3, 1fr);
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+.fir-tree-inner {
+  padding: 1.5rem 0;
+  display: grid;
+  gap: 2rem 2rem;
+  grid-template-columns: repeat(3, 1fr);
 }
-.tree-card{
-	display: flex;
-	justify-content: center;
-	padding: 2rem 1rem;
-	border-radius: 8px;
-	background-color: rgba(255, 255, 255, 0.5);
-	cursor: pointer;
-	transition: background-color 0.5s ease;
+.tree-card {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.5s ease;
 }
-.tree-card_chosen{
-	background-color: rgba(165, 11, 139, 0.5);
+.tree-card_chosen {
+  background-color: rgba(165, 11, 139, 0.5);
 }
-.tree-card:hover{
-	background-color: rgba(11, 155, 135, 0.5);
+.tree-card:hover {
+  background-color: rgba(11, 155, 135, 0.5);
 }
-.fir-tree-title{
-	color: #fff;
-	font-size: 2.6rem;
-	letter-spacing: 0.1rem;
-	font-style: italic;
-	padding: 1.4rem 0 2rem 0;
+.fir-tree-title {
+  color: #fff;
+  font-size: 2.6rem;
+  letter-spacing: 0.1rem;
+  font-style: italic;
+  padding: 1.4rem 0 2rem 0;
 }
-.fir-tree-bg-inner{
-	padding: 1.5rem 0 ;
-	display: grid;
-	gap: 2rem 2rem;
-	grid-template-columns: repeat(4, 1fr);
+.fir-tree-bg-inner {
+  padding: 1.5rem 0;
+  display: grid;
+  gap: 2rem 2rem;
+  grid-template-columns: repeat(4, 1fr);
 }
-.fir-tree-bg-card{
-	cursor:	pointer;
-	border: 4px solid transparent;
+.fir-tree-bg-card {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  border: 4px solid transparent;
 }
-.fir-tree-bg-card_chosen{
-	border: 4px solid rgb(129, 7, 109);
+.fir-tree-bg-card_chosen {
+  border: 4px solid rgb(129, 7, 109);
 }
-.swag-inner{
-	display: flex;
-	column-gap: 2rem;
+.swag-inner {
+  display: flex;
+  column-gap: 2rem;
 }
-.swag-item{
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	cursor: pointer;
+.swag-item {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
 }
-.swag-red{
-	background-color: rgb(163, 32, 32);
+.swag-red {
+  background-color: rgb(163, 32, 32);
 }
-.swag-blue{
-	background-color: rgb(4, 7, 143);
+.swag-blue {
+  background-color: rgb(49, 86, 155);
 }
-.swag-green{
-	background-color: rgb(6, 105, 39);
+.swag-green {
+  background-color: rgb(18, 128, 55);
 }
-.swag-yellow{
-	background-color: rgb(200, 197, 21);
+.swag-yellow {
+  background-color: rgb(200, 197, 21);
 }
-.swag-multy{
-	background: rgb(182,74,74);
-	background: linear-gradient(90deg, rgba(182,74,74,1) 0%, rgba(106,121,9,1) 35%, rgba(0,212,255,1) 100%);
+.swag-multy {
+  background: rgb(182, 74, 74);
+  background: linear-gradient(
+    90deg,
+    rgba(182, 74, 74, 1) 0%,
+    rgba(106, 121, 9, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
-.swag-switch{
-	color: #fff;
-	font-size: 2rem;
-	min-width: 62px;
-	border-radius: 12%;
-	padding: 0.3rem 0.8rem;
-	background-color: rgb(114, 53, 184);
-	cursor: pointer;
+.swag-switch {
+  color: #fff;
+  font-size: 2rem;
+  min-width: 62px;
+  border-radius: 12%;
+  padding: 0.3rem 0.8rem;
+  background-color: rgb(114, 53, 184);
+  cursor: pointer;
+}
+.settings-buttons-inner {
+  display: flex;
+  padding: 2rem 0 0.6rem 0;
+  column-gap: 3rem;
+}
+.audio-on {
+  filter: grayscale(100%);
+}
+.settings-button {
+  max-height: 30px;
+  cursor: pointer;
+}
+.settings-button_chosen{
+  filter: invert(66%) sepia(5%) saturate(12%) hue-rotate(253deg) brightness(91%) contrast(91%);
+}
+.fa-snowflake {
+  pointer-events: none;
+  color: #fff;
+  position: absolute;
+  top: -20px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh);
+  }
+}
+.snow-fall {
 }
